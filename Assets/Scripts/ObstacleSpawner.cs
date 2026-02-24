@@ -6,17 +6,10 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private List<Sprite> carsSprites;
     [SerializeField] private List<Sprite> motorcycleSprites;
+    [SerializeField] private List<float> spawnYCoordinates;
     [SerializeField] private GameObject carPrefab;
     [SerializeField] private GameObject motorcyclePrefab;
     [SerializeField, Range(1f, 5f)] private float spawnInterval = 2f;
-
-    private List<float> spawnYCoordinates = new List<float> {
-        0.42f,
-        -1.07f,
-        0f,
-        -2.125777f,
-        1.435776f
-    };
 
     void Start()
     {
