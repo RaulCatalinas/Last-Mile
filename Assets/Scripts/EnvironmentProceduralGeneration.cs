@@ -3,22 +3,49 @@ using UnityEngine;
 
 public class EnvironmentProceduralGeneration : MonoBehaviour
 {
-    [SerializeField] List<GameObject> environmentItems;
+    [SerializeField] private List<GameObject> environmentChunks;
+    [SerializeField] private int initialChunks = 5;
+    [SerializeField] private float chunkWidth = 10f;
+    [SerializeField] private Transform startRightPoint;
+    [SerializeField] private Transform startLeftPoint;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private float nextSpawnRightX;
+    private float nextSpawnLeftX;
+
     void Start()
     {
-        GenerateEnvironment();
+        nextSpawnRightX = startRightPoint.position.x;
+        nextSpawnLeftX = startLeftPoint.position.x;
+
+        for (int i = 0; i < initialChunks; i++)
+        {
+            SpawnChunk();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnChunk()
     {
+        var chunk = environmentChunks[Random.Range(0, environmentChunks.Count)];
 
-    }
+        Instantiate(
+            chunk,
+            new Vector3(nextSpawnRightX, startRightPoint.position.y, 0),
+            Quaternion.identity,
+            startRightPoint
+        );
+        nextSpawnRightX += chunkWidth;
 
-    void GenerateEnvironment()
-    {
-        var environmentItem = environmentItems[Random.Range(0, environmentItems.Count)];
+        Instantiate(
+            chunk,
+            new Vector3(nextSpawnLeftX, startLeftPoint.position.y, 0),
+            new Quaternion(
+                Quaternion.identity.x,
+                Quaternion.identity.y,
+                180,
+                Quaternion.identity.w
+            ),
+            startLeftPoint
+        );
+        nextSpawnLeftX -= chunkWidth;
     }
 }
