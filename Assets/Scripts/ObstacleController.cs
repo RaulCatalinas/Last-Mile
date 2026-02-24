@@ -13,9 +13,6 @@ public class ObstacleController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("RoadEnd"))
-        {
-            Destroy(gameObject);
-        }
+        if (collision.CompareTag("RoadEnd")) Destroy(gameObject);
     }
 }
