@@ -16,4 +16,9 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
     {
 
     }
+
+    void GenerateEnvironment()
+    {
+        var environmentItem = environmentItems[Random.Range(0, environmentItems.Count)];
+    }
 }
