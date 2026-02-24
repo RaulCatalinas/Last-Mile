@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5769682983994734668
 Transform:
@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: -3309793917233510957, guid: 80226fa9966bf734bac8ab6da9de6e3d, type: 3}
   - {fileID: 2372579845433336777, guid: 02d46dc4da525fd4f801830e40460b2c, type: 3}
   - {fileID: -3608064214195574059, guid: 13682a69666800a49b5a2dbf8aef9ec1, type: 3}
+  spawnPoints: []
   carPrefab: {fileID: 4625700777383682942, guid: 25fe1e9ffae4f0849b362dcbc8a92892, type: 3}
   motorcyclePrefab: {fileID: 2858709072668954549, guid: fcedd350b46a01e44a6aefbfff630a92, type: 3}
   spawnInterval: 2

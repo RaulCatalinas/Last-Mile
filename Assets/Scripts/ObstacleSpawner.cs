@@ -6,7 +6,7 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private List<Sprite> carsSprites;
     [SerializeField] private List<Sprite> motorcycleSprites;
-    [SerializeField] private List<float> spawnYCoordinates;
+    [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private GameObject carPrefab;
     [SerializeField] private GameObject motorcyclePrefab;
     [SerializeField, Range(1f, 5f)] private float spawnInterval = 2f;
@@ -53,12 +53,11 @@ public class ObstacleSpawner : MonoBehaviour
 
     private GameObject InstantiatePrefab(GameObject prefab)
     {
-        var spawnYCoordinate = spawnYCoordinates[Random.Range(0, spawnYCoordinates.Count)];
-        var spawnX = Camera.main.ViewportToWorldPoint(new Vector3(1.2f, 0, 0)).x;
+        var randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
 
         return Instantiate(
             prefab,
-            new Vector3(spawnX, spawnYCoordinate, prefab.transform.position.z),
+            new Vector3(randomSpawnPoint.position.x, randomSpawnPoint.position.y, prefab.transform.position.z),
             prefab.transform.rotation
         );
     }
