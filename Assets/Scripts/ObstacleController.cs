@@ -1,10 +1,19 @@
-using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ObstacleController : MonoBehaviour
 {
-    [SerializeField, Range(1f, 10f)] private float speed = 3f;
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField, Range(3f, 15f)] private float minimumSpeed = 5f;
+    [SerializeField, Range(3f, 15f)] private float maximumSpeed = 8f;
+
+    private float speed;
+    private Rigidbody2D rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        speed = Random.Range(minimumSpeed, maximumSpeed);
+    }
 
     void FixedUpdate()
     {

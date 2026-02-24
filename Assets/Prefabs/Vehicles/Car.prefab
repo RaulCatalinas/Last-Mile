@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d127a8d83c8902c448d2cb23a85ce1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleController
-  speed: 3
-  rb: {fileID: -3376599833069180847}
+  minimumSpeed: 5
+  maximumSpeed: 8
 --- !u!212 &5567271570028415290
 SpriteRenderer:
   serializedVersion: 2
