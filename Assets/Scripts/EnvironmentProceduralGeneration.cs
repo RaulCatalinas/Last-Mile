@@ -8,7 +8,7 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        GenerateEnvironment();
     }
 
     // Update is called once per frame
