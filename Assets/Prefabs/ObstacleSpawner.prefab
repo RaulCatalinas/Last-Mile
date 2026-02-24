@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8278432473278450604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5769682983994734668}
+  - component: {fileID: 3651255913840787322}
+  m_Layer: 0
+  m_Name: ObstacleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5769682983994734668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278432473278450604}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3651255913840787322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278432473278450604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9e7eea03041f242a2a22af8bdce5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawner
+  carsSprites:
+  - {fileID: -7926456836384390584, guid: c243fb6f73e7686449a5c6bc03e7d89b, type: 3}
+  - {fileID: -7908996661458030427, guid: 3a7ba374864e49f40a5264befc615f0e, type: 3}
+  - {fileID: -4426547465092010004, guid: c06feb2b3592cb24b98b0fe21a041fc6, type: 3}
+  - {fileID: -2118432465986723062, guid: 6fe50a89e246ea54d8167aa64404c4cb, type: 3}
+  - {fileID: 1069783620627475378, guid: 3b7647ce85495b548960188c826f8614, type: 3}
+  motorcycleSprites:
+  - {fileID: 7980170343531276299, guid: bbb2c3bcbab85bc4facc4a8be8c89510, type: 3}
+  - {fileID: 757063192049191160, guid: cb221f0d02fed5244a42579337503032, type: 3}
+  - {fileID: -3309793917233510957, guid: 80226fa9966bf734bac8ab6da9de6e3d, type: 3}
+  - {fileID: 2372579845433336777, guid: 02d46dc4da525fd4f801830e40460b2c, type: 3}
+  - {fileID: -3608064214195574059, guid: 13682a69666800a49b5a2dbf8aef9ec1, type: 3}
+  carPrefab: {fileID: 4625700777383682942, guid: 25fe1e9ffae4f0849b362dcbc8a92892, type: 3}
+  motorcyclePrefab: {fileID: 2858709072668954549, guid: fcedd350b46a01e44a6aefbfff630a92, type: 3}
+  spawnInterval: 2

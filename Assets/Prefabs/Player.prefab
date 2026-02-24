@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 1
+  acceleration: 0.5
 --- !u!212 &7267533167924517069
 SpriteRenderer:
   serializedVersion: 2
@@ -95,7 +96,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6128299156075563123, guid: cd8bd66e6b4d7ec45aa3be11b56a5bca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

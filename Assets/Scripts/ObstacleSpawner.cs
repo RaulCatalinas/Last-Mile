@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,25 +8,43 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private List<Sprite> motorcycleSprites;
     [SerializeField] private GameObject carPrefab;
     [SerializeField] private GameObject motorcyclePrefab;
+    [SerializeField, Range(1f, 5f)] private float spawnInterval = 2f;
 
-    void Awake()
+    private List<float> spawnYCoordinates = new List<float> {
+        0.42f,
+        -1.07f,
+        0f,
+        -2.125777f,
+        1.435776f
+    };
+
+    void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        StartCoroutine(SpawnRoutine());
+    }
+
+    public IEnumerator SpawnRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnInterval);
+            SpawnObstacle();
+        }
     }
 
     public void SpawnObstacle()
     {
-        bool spawnCar = Random.Range(0, 2) == 0;
+        var spawnCar = Random.Range(0, 2) == 0;
+        var obstacle = InstantiatePrefab(spawnCar ? carPrefab : motorcyclePrefab);
+
 
         if (spawnCar)
         {
-            GameObject car = Instantiate(carPrefab, transform.position, Quaternion.identity);
-            car.GetComponent<SpriteRenderer>().sprite = GetRandomCarSprite();
+            obstacle.GetComponent<SpriteRenderer>().sprite = GetRandomCarSprite();
         }
         else
         {
-            GameObject motorcycle = Instantiate(motorcyclePrefab, transform.position, Quaternion.identity);
-            motorcycle.GetComponent<SpriteRenderer>().sprite = GetRandomMotorcycleSprite();
+            obstacle.GetComponent<SpriteRenderer>().sprite = GetRandomMotorcycleSprite();
         }
     }
 
@@ -37,5 +56,17 @@ public class ObstacleSpawner : MonoBehaviour
     private Sprite GetRandomMotorcycleSprite()
     {
         return motorcycleSprites[Random.Range(0, motorcycleSprites.Count)];
+    }
+
+    private GameObject InstantiatePrefab(GameObject prefab)
+    {
+        var spawnYCoordinate = spawnYCoordinates[Random.Range(0, spawnYCoordinates.Count)];
+        var spawnX = Camera.main.ViewportToWorldPoint(new Vector3(1.2f, 0, 0)).x;
+
+        return Instantiate(
+            prefab,
+            new Vector3(spawnX, spawnYCoordinate, prefab.transform.position.z),
+            prefab.transform.rotation
+        );
     }
 }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private ObstacleSpawner obstacleSpawner;
-
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -11,6 +9,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
