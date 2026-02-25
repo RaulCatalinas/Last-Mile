@@ -70,18 +70,19 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
 
     void SpawnSecondLayerChunk()
     {
-        var chunk = secondLayerChunks[Random.Range(0, secondLayerChunks.Count)];
+        var chunkRight = secondLayerChunks[Random.Range(0, secondLayerChunks.Count)];
+        var chunkLeft = secondLayerChunks[Random.Range(0, secondLayerChunks.Count)];
 
         Instantiate(
-            chunk,
-            secondLayerStartLeftPoint.position,
+            chunkRight,
+            secondLayerStartRightPoint.position,
             Quaternion.identity,
             secondLayerStartRightPoint
         );
 
 
         Instantiate(
-            chunk,
+            chunkLeft,
             secondLayerStartLeftPoint.position,
             Quaternion.identity,
             secondLayerStartLeftPoint
