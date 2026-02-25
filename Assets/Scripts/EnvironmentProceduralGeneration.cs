@@ -3,49 +3,88 @@ using UnityEngine;
 
 public class EnvironmentProceduralGeneration : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> environmentChunks;
+    [Header("Chunks")]
+    [SerializeField] private List<GameObject> firstLayerChunks;
+    [SerializeField] private List<GameObject> secondLayerChunks;
     [SerializeField] private int initialChunks = 5;
     [SerializeField] private float chunkWidth = 10f;
-    [SerializeField] private Transform startRightPoint;
-    [SerializeField] private Transform startLeftPoint;
 
-    private float nextSpawnRightX;
-    private float nextSpawnLeftX;
+    [Header("Spawn Points")]
+    [SerializeField] private Transform firstLayerStartRightPoint;
+    [SerializeField] private Transform firstLayerStartLeftPoint;
+
+    [Header("Background Spawn Points")]
+    [SerializeField] private Transform secondLayerStartRightPoint;
+    [SerializeField] private Transform secondLayerStartLeftPoint;
+
+    private float firstLayerNextRightX;
+    private float firstLayerNextLeftX;
 
     void Start()
     {
-        nextSpawnRightX = startRightPoint.position.x;
-        nextSpawnLeftX = startLeftPoint.position.x;
+        firstLayerNextRightX = firstLayerStartRightPoint.position.x;
+        firstLayerNextLeftX = firstLayerStartLeftPoint.position.x;
+
+        SpawnSecondLayerChunk();
 
         for (int i = 0; i < initialChunks; i++)
         {
-            SpawnChunk();
+            SpawnFirstLayerChunk();
         }
+
     }
 
-    void SpawnChunk()
+    void SpawnFirstLayerChunk()
     {
-        var chunk = environmentChunks[Random.Range(0, environmentChunks.Count)];
+        var chunk = firstLayerChunks[Random.Range(0, firstLayerChunks.Count)];
 
         Instantiate(
             chunk,
-            new Vector3(nextSpawnRightX, startRightPoint.position.y, 0),
+            new Vector3(
+                firstLayerNextRightX,
+                firstLayerStartRightPoint.position.y,
+                0
+            ),
             Quaternion.identity,
-            startRightPoint
+            firstLayerStartRightPoint
         );
-        nextSpawnRightX += chunkWidth;
+        firstLayerNextRightX += chunkWidth;
 
         Instantiate(
             chunk,
-            new Vector3(nextSpawnLeftX, startLeftPoint.position.y, 0),
+            new Vector3(
+                firstLayerNextLeftX,
+                firstLayerStartLeftPoint.position.y,
+                0
+            ),
             new Quaternion(
                 Quaternion.identity.x,
                 Quaternion.identity.y,
                 180,
                 Quaternion.identity.w
             ),
-            startLeftPoint
+            firstLayerStartLeftPoint
         );
-        nextSpawnLeftX -= chunkWidth;
+        firstLayerNextLeftX -= chunkWidth;
+    }
+
+    void SpawnSecondLayerChunk()
+    {
+        var chunk = secondLayerChunks[Random.Range(0, secondLayerChunks.Count)];
+
+        Instantiate(
+            chunk,
+            secondLayerStartLeftPoint.position,
+            Quaternion.identity,
+            secondLayerStartRightPoint
+        );
+
+
+        Instantiate(
+            chunk,
+            secondLayerStartLeftPoint.position,
+            Quaternion.identity,
+            secondLayerStartLeftPoint
+        );
     }
 }

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        LoadScene("Game");
+        LoadScene("City");
     }
 
     public void ExitGame()
