@@ -1,18 +1,13 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; private set; }
+    [SerializeField] TMP_Text scoreText;
 
-    private void Awake()
+    public void IncreaseScore(int score)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        scoreText.text = score.ToString();
     }
 }

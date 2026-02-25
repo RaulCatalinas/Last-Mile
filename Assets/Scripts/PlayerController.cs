@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0.1f, 2f)] private float acceleration = 0.5f;
     [SerializeField] private FloatingJoystick joystick;
 
+
     private Rigidbody2D rb;
 
     void Start()
     {
+        GameManager.gameOver = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -22,6 +24,10 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Obstacle")) GameManager.Instance.GameOver();
+        if (collision.CompareTag("Obstacle"))
+        {
+            GameManager.gameOver = true;
+            GameManager.Instance.GameOver();
+        }
     }
 }
