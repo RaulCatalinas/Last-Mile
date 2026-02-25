@@ -97,7 +97,10 @@ public class ObstacleSpawner : MonoBehaviour
 
     void IncreaseDifficulty()
     {
-        spawnInterval *= 0.9f;
+        if (spawnInterval < minimumSpawnInterval)
+        {
+            spawnInterval *= 0.9f;
+        }
 
         if (maximumSpeed < topSpeed)
         {
