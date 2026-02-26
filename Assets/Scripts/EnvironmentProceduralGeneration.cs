@@ -11,7 +11,7 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
     [SerializeField] private float chunkWidth = 10f;
 
     [Header("Spawn")]
-    [SerializeField, Range(1f, 5f)] private float spawnInterval = 2f;
+    [SerializeField, Range(1f, 50f)] private float spawnInterval = 2f;
 
     [Header("Spawn Points")]
     [SerializeField] private Transform firstLayerStartRightPoint;
@@ -54,6 +54,15 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
             );
         }
 
+        for (int i = 0; i < initialChunks; i++)
+        {
+            SpawnFirstLayerChunk(
+                ref parallaxNextRightX,
+                ref parallaxNextLeftX,
+                firstLayerStartRightPointParallax,
+                firstLayerStartLeftPointParallax
+            );
+        }
     }
 
     IEnumerator SpawnRoutine()
@@ -61,6 +70,9 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
+
+            parallaxNextRightX -= chunkWidth * initialChunks;
+            parallaxNextLeftX -= chunkWidth * initialChunks;
 
             for (int i = 0; i < initialChunks; i++)
             {
