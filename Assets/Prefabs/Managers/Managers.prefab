@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   scoreText: {fileID: 0}
+  gameOverPanel: {fileID: 0}
 --- !u!1 &1594272726301963852
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51436701469a0455d95655a68877c2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxController
+  layers: []
 --- !u!1 &7137071485049179946
 GameObject:
   m_ObjectHideFlags: 0
