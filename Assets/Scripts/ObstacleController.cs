@@ -36,6 +36,7 @@ public class ObstacleController : MonoBehaviour
         {
             crashAudioSource.Play();
             smokeParticleSystem.Play();
+            GameManager.Instance.GameOver();
         }
     }
 }

@@ -10,9 +10,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    void Start()
+    void Awake()
     {
-        GameManager.gameOver = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -20,14 +19,5 @@ public class PlayerController : MonoBehaviour
     {
         speed += acceleration * Time.fixedDeltaTime;
         rb.linearVelocityY = speed * joystick.Vertical;
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Obstacle"))
-        {
-            GameManager.gameOver = true;
-            GameManager.Instance.GameOver();
-        }
     }
 }

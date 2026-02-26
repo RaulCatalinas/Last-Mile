@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public static bool gameOver { get; set; }
+    public static bool isGameOver { get; private set; }
 
     void Awake()
     {
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        isGameOver = false;
         LoadScene("City");
     }
 
@@ -39,6 +40,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        isGameOver = true;
         Debug.Log("You Loose");
+    }
+
+    public void RestartGame()
+    {
+        isGameOver = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+        );
     }
 }
