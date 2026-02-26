@@ -3573,7 +3573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6908958148153127031, guid: 040df5926ddde4c0791200103caf9795, type: 3}
       propertyPath: m_Name
-      value: SocreItems
+      value: ScoreItems
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
