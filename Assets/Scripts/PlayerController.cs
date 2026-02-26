@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocityY = speed * joystick.Vertical;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Obstacle"))
+        if (collision.collider.CompareTag("Obstacle"))
         {
             GameManager.gameOver = true;
             GameManager.Instance.GameOver();
