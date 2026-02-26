@@ -6,18 +6,15 @@ public class ObstacleController : MonoBehaviour
     private Rigidbody2D rb;
     private float speed;
     private AudioSource crashAudioSource;
-    private ParticleSystem smokeParticleSystem;
+    //private ParticleSystem smokeParticleSystem;
+    [SerializeField] private Transform smokeStartPoint;
+    [SerializeField] private GameObject smokePrefab;
 
     void Awake()
     {
         speed = ObstacleSpawner.Instance.GetRandomSpeed();
         rb = GetComponent<Rigidbody2D>();
         crashAudioSource = GetComponent<AudioSource>();
-        smokeParticleSystem = GetComponent<ParticleSystem>();
-    }
-    void Start()
-    {
-        smokeParticleSystem.Stop();
     }
 
     void FixedUpdate()
@@ -35,8 +32,8 @@ public class ObstacleController : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             crashAudioSource.Play();
-            smokeParticleSystem.Play();
-            GameManager.Instance.GameOver();
+            Instantiate(smokePrefab, smokeStartPoint.position, Quaternion.identity);
+            //GameManager.Instance.GameOver();
         }
     }
 }
