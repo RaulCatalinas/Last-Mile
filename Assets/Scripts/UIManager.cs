@@ -4,9 +4,38 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
+    [SerializeField] GameObject gameOverPanel;
+
+    public static UIManager Instance { get; private set; }
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
 
     public void IncreaseScore(int score)
     {
         scoreText.text = score.ToString();
+    }
+
+    public void RestartGame()
+    {
+        gameOverPanel.SetActive(false);
+        GameManager.Instance.RestartGame();
+    }
+
+    public void BackToMainMenu()
+    {
+        GameManager.Instance.LoadScene("MainMenu");
+    }
+
+    public void ExitGame()
+    {
+        GameManager.Instance.ExitGame();
+    }
+
+    public void ShowGameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
     }
 }

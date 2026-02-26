@@ -41,14 +41,13 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
-        Debug.Log("You Loose");
+        Time.timeScale = 0f;
     }
 
     public void RestartGame()
     {
         isGameOver = false;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        );
+        Time.timeScale = 1f;
+        LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
