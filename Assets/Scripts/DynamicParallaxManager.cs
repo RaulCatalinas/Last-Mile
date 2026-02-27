@@ -8,6 +8,8 @@ public class DynamicParallaxLayer
     [HideInInspector] public List<GameObject> possibleChunks = new List<GameObject>();
     public float speed;
     public float chunkWidth;
+    [Range(0f, 1f)] public float gapProbability = 0.2f;
+    public int maxGapChunks = 3;
 
     [HideInInspector] public List<GameObject> toRemove = new List<GameObject>();
     [HideInInspector] public List<GameObject> toAdd = new List<GameObject>();
@@ -46,16 +48,36 @@ public class DynamicParallaxManager : MonoBehaviour
                 var rightmostX = GetRightmostX(layer.spawnedObjects);
                 var newChunk = layer.possibleChunks[Random.Range(0, layer.possibleChunks.Count)];
 
-                var spawned = Instantiate(
-                    newChunk,
-                    new Vector3(
-                        rightmostX + layer.chunkWidth,
-                        obj.transform.position.y,
-                        obj.transform.position.z
-                    ),
-                    obj.transform.rotation,
-                    obj.transform.parent
-                );
+                GameObject spawned;
+
+                if (Random.value < layer.gapProbability)
+                {
+                    var gapSize = Random.Range(1, layer.maxGapChunks + 1);
+
+                    spawned = Instantiate(
+                        newChunk,
+                        new Vector3(
+                            rightmostX + layer.chunkWidth * (gapSize + 1),
+                            obj.transform.position.y,
+                            obj.transform.position.z
+                        ),
+                        obj.transform.rotation,
+                        obj.transform.parent
+                    );
+                }
+                else
+                {
+                    spawned = Instantiate(
+                        newChunk,
+                        new Vector3(
+                            rightmostX + layer.chunkWidth,
+                            obj.transform.position.y,
+                            obj.transform.position.z
+                        ),
+                        obj.transform.rotation,
+                        obj.transform.parent
+                    );
+                }
 
                 layer.toAdd.Add(spawned);
                 layer.toRemove.Add(obj);
