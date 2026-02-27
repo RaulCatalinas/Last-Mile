@@ -41,7 +41,7 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
 
     void Start()
     {
-        SpawnGroundChunk();
+        if (groundChunks != null && groundChunks.Count > 0) SpawnGroundChunk();
 
         for (int i = 0; i < initialChunks; i++)
         {

@@ -11,7 +11,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/City.unity
     guid: 886a2fd19b58d27418c88a51f1e9ffdb
+  - enabled: 1
+    path: Assets/Scenes/Dessert.unity
+    guid: 55ab465af5a6943a9b5cadc84542d20f
   m_configObjects:
+    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: f8876f24fd8da4c8492872931c105d20, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: b27df6d17d4264a4ea03815d6c4d8756, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 468673889721a44398b9f44797999903, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 1b8c82dcac0cb4fdba749ba6739ad57c, type: 2}
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
