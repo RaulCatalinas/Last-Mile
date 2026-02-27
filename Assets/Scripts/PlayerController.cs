@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0.1f, 2f)] private float acceleration = 0.5f;
     [SerializeField] private FloatingJoystick joystick;
 
-
     private Rigidbody2D rb;
 
     void Awake()

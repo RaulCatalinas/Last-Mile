@@ -33,6 +33,7 @@ public class ObstacleController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            ScoreManager.Instance.SaveMaxScore();
             crashAudioSource.Play();
             Instantiate(smokePrefab, smokeStartPoint.position, Quaternion.identity);
             GameManager.Instance.GameOver();
