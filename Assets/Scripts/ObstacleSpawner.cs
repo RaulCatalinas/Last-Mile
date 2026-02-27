@@ -34,6 +34,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     const int WAVES = 10;
     int spawnCounter = 0;
+    ObstacleData selectedObstacle;
 
     void Awake()
     {
@@ -70,8 +71,6 @@ public class ObstacleSpawner : MonoBehaviour
     public void SpawnObstacle()
     {
         if (obstacles == null || obstacles.Count == 0) return;
-
-        ObstacleData selectedObstacle;
 
         if (Random.value < ambulanceProbability)
         {
