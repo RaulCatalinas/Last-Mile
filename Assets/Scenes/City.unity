@@ -191,7 +191,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2017954704882989332, guid: a640c2be8a1209641ab2951196eb7c02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.2795
+      value: -10.3005
       objectReference: {fileID: 0}
     - target: {fileID: 2017954704882989332, guid: a640c2be8a1209641ab2951196eb7c02, type: 3}
       propertyPath: m_LocalPosition.y
@@ -398,7 +398,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2371879665829941516, guid: b2536537b0f66432c86dc132735b21ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.150002
+      value: 13.67
       objectReference: {fileID: 0}
     - target: {fileID: 2371879665829941516, guid: b2536537b0f66432c86dc132735b21ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1111,8 +1111,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DynamicParallaxManager
   layers:
   - spawnedObjects: []
+    possibleChunks:
+    - {fileID: 7662978610080510359, guid: b75c5e34e31634b23928dd5dcb8d15e9, type: 3}
+    - {fileID: 2590891729476900537, guid: 63f7a350fa58f4b0abb8fd93cb926cc1, type: 3}
+    - {fileID: 7040118199007929186, guid: 67c4f4b123925428fa758ddad5dd1920, type: 3}
+    - {fileID: 2921754489092858992, guid: 3815b451879864e3985c248a1f2c7826, type: 3}
+    - {fileID: 3772088158657578531, guid: 0ff4bbf490723465f9a92c83e172d1d3, type: 3}
+    - {fileID: 6382115040779866215, guid: 7e46a2f963b9a417caaf4ef063bb1e40, type: 3}
+    - {fileID: 6363658103778312260, guid: 4f2efa91d0b534aa2849d64571a75833, type: 3}
+    - {fileID: 6294869729314192832, guid: e0db6a93a3e634b37ac48c0dead721a5, type: 3}
+    - {fileID: 2048812025958425930, guid: d8dff184da3344e55bb0b6b9a74ef836, type: 3}
+    - {fileID: 3485278768696376824, guid: d83faf0bab7224e8ea8ad4e7b9bd1284, type: 3}
+    - {fileID: 7406695812290801861, guid: 897032d2ba0d0498eb02ab4a84f0e1e3, type: 3}
+    - {fileID: 6026340063540418566, guid: a2b6650a166b948d080d67e98313e27e, type: 3}
     speed: 2.46
-    chunkWidth: 10
+    chunkWidth: 2
+    toRemove: []
+    toAdd: []
+  - spawnedObjects: []
+    possibleChunks:
+    - {fileID: 7662978610080510359, guid: b75c5e34e31634b23928dd5dcb8d15e9, type: 3}
+    - {fileID: 2590891729476900537, guid: 63f7a350fa58f4b0abb8fd93cb926cc1, type: 3}
+    - {fileID: 7040118199007929186, guid: 67c4f4b123925428fa758ddad5dd1920, type: 3}
+    - {fileID: 2921754489092858992, guid: 3815b451879864e3985c248a1f2c7826, type: 3}
+    - {fileID: 3772088158657578531, guid: 0ff4bbf490723465f9a92c83e172d1d3, type: 3}
+    - {fileID: 6382115040779866215, guid: 7e46a2f963b9a417caaf4ef063bb1e40, type: 3}
+    - {fileID: 6363658103778312260, guid: 4f2efa91d0b534aa2849d64571a75833, type: 3}
+    - {fileID: 6294869729314192832, guid: e0db6a93a3e634b37ac48c0dead721a5, type: 3}
+    - {fileID: 2048812025958425930, guid: d8dff184da3344e55bb0b6b9a74ef836, type: 3}
+    - {fileID: 3485278768696376824, guid: d83faf0bab7224e8ea8ad4e7b9bd1284, type: 3}
+    - {fileID: 7406695812290801861, guid: 897032d2ba0d0498eb02ab4a84f0e1e3, type: 3}
+    - {fileID: 6026340063540418566, guid: a2b6650a166b948d080d67e98313e27e, type: 3}
+    speed: 2.46
+    chunkWidth: 2
+    toRemove: []
+    toAdd: []
 --- !u!1 &945358357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,7 +1914,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2371879665829941516, guid: b2536537b0f66432c86dc132735b21ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.15
+      value: 13.67
       objectReference: {fileID: 0}
     - target: {fileID: 2371879665829941516, guid: b2536537b0f66432c86dc132735b21ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2981,6 +3014,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1401388558}
     - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
+      propertyPath: buildingChunkWidth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
       propertyPath: groundLeftSpawnPoint
       value: 
       objectReference: {fileID: 989222140}
@@ -3121,6 +3158,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6026340063540418566, guid: a2b6650a166b948d080d67e98313e27e, type: 3}
     - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
+      propertyPath: buildingParallaxLeftSpawnPoint
+      value: 
+      objectReference: {fileID: 9804043}
+    - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
       propertyPath: 'environmentItems.Array.data[0]'
       value: 
       objectReference: {fileID: 7662978610080510359, guid: b75c5e34e31634b23928dd5dcb8d15e9, type: 3}
@@ -3200,6 +3241,10 @@ PrefabInstance:
       propertyPath: 'firstLayerChunks.Array.data[9]'
       value: 
       objectReference: {fileID: 3485278768696376824, guid: d83faf0bab7224e8ea8ad4e7b9bd1284, type: 3}
+    - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
+      propertyPath: buildingParallaxRightSpawnPoint
+      value: 
+      objectReference: {fileID: 1401388558}
     - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
       propertyPath: 'environmentChunks.Array.data[0]'
       value: 
@@ -3290,6 +3335,14 @@ PrefabInstance:
       objectReference: {fileID: 85035137}
     - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
       propertyPath: firstLayerStartRightPointParallax
+      value: 
+      objectReference: {fileID: 1375388783}
+    - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
+      propertyPath: buildingParallaxLeftSpawnPointOutOfCamera
+      value: 
+      objectReference: {fileID: 85035137}
+    - target: {fileID: 5979367641032426184, guid: a3e658a75cb224a6b9aa730bcd4ca638, type: 3}
+      propertyPath: buildingParallaxRightSpawnPointOutOfCamera
       value: 
       objectReference: {fileID: 1375388783}
     m_RemovedComponents: []

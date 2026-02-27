@@ -24,50 +24,68 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
     [Header("Building Parallax Spawn Points")]
     [SerializeField] private Transform buildingParallaxRightSpawnPoint;
     [SerializeField] private Transform buildingParallaxLeftSpawnPoint;
+    [SerializeField] private Transform buildingParallaxRightSpawnPointOutOfCamera;
+    [SerializeField] private Transform buildingParallaxLeftSpawnPointOutOfCamera;
+
 
     private float buildingNextRightX;
     private float buildingNextLeftX;
     private float groundNextRightX;
     private float groundNextLeftX;
 
-    void Start()
+    void Awake()
     {
         buildingNextRightX = 0;
         buildingNextLeftX = 0;
-        groundNextRightX = groundRightSpawnPoint.position.x;
-        groundNextLeftX = groundLeftSpawnPoint.position.x;
+    }
 
+    void Start()
+    {
         SpawnGroundChunk();
 
         for (int i = 0; i < initialChunks; i++)
         {
-            SpawnBuildingChunk();
+            SpawnBuildingChunk(
+                buildingParallaxRightSpawnPoint,
+                buildingParallaxLeftSpawnPoint
+            );
+        }
+
+        buildingNextRightX = 0;
+        buildingNextLeftX = 0;
+
+        for (int i = 0; i < initialChunks; i++)
+        {
+            SpawnBuildingChunk(
+                buildingParallaxRightSpawnPointOutOfCamera,
+                buildingParallaxLeftSpawnPointOutOfCamera
+            );
         }
     }
 
-    void SpawnBuildingChunk()
+    void SpawnBuildingChunk(Transform rightSpawn, Transform leftSpawn)
     {
         var rightChunk = buildingChunks[Random.Range(0, buildingChunks.Count)];
         var leftChunk = buildingChunks[Random.Range(0, buildingChunks.Count)];
 
-        var spawnRightX = buildingParallaxRightSpawnPoint.position.x + buildingNextRightX;
-        var spawnLeftX = buildingParallaxLeftSpawnPoint.position.x + buildingNextLeftX;
+        var spawnRightX = rightSpawn.position.x + buildingNextRightX;
+        var spawnLeftX = leftSpawn.position.x + buildingNextLeftX;
 
         var right = Instantiate(
             rightChunk,
-            new Vector3(spawnRightX, buildingParallaxRightSpawnPoint.position.y, 0),
+            new Vector3(spawnRightX, rightSpawn.position.y, 0),
             Quaternion.identity,
             buildingRightSpawnPoint
         );
         var left = Instantiate(
             leftChunk,
-            new Vector3(spawnLeftX, buildingParallaxLeftSpawnPoint.position.y, 0),
+            new Vector3(spawnLeftX, leftSpawn.position.y, 0),
             Quaternion.Euler(0, 0, 180),
             buildingLeftSpawnPoint
         );
 
-        dynamicParallaxManager.RegisterObject(right, 0);
-        dynamicParallaxManager.RegisterObject(left, 0);
+        dynamicParallaxManager.RegisterObject(right, 0, buildingChunks);
+        dynamicParallaxManager.RegisterObject(left, 1, buildingChunks);
 
         buildingNextRightX += buildingChunkWidth;
         buildingNextLeftX += buildingChunkWidth;
@@ -80,14 +98,21 @@ public class EnvironmentProceduralGeneration : MonoBehaviour
 
         Instantiate(
             rightChunk,
-            new Vector3(groundNextRightX, groundRightSpawnPoint.position.y, 0),
+            new Vector3(
+                groundNextRightX,
+                groundRightSpawnPoint.position.y,
+                0
+            ),
             Quaternion.identity,
             groundRightSpawnPoint
         );
         Instantiate(
             leftChunk,
-            new Vector3(groundNextLeftX,
-            groundLeftSpawnPoint.position.y, 0),
+            new Vector3(
+                groundNextLeftX,
+                groundLeftSpawnPoint.position.y,
+                0
+            ),
             Quaternion.identity,
             groundLeftSpawnPoint
         );

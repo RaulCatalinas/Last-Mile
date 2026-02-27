@@ -1,13 +1,16 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class DynamicParallaxLayer
 {
-    public List<GameObject> spawnedObjects = new List<GameObject>();
+    [HideInInspector] public List<GameObject> spawnedObjects = new List<GameObject>();
+    [HideInInspector] public List<GameObject> possibleChunks = new List<GameObject>();
     public float speed;
     public float chunkWidth;
+
+    [HideInInspector] public List<GameObject> toRemove = new List<GameObject>();
+    [HideInInspector] public List<GameObject> toAdd = new List<GameObject>();
 }
 
 public class DynamicParallaxManager : MonoBehaviour
@@ -31,6 +34,9 @@ public class DynamicParallaxManager : MonoBehaviour
 
     void MoveLayer(DynamicParallaxLayer layer)
     {
+        layer.toRemove.Clear();
+        layer.toAdd.Clear();
+
         foreach (var obj in layer.spawnedObjects)
         {
             obj.transform.position += Vector3.left * layer.speed * Time.deltaTime;
@@ -38,13 +44,33 @@ public class DynamicParallaxManager : MonoBehaviour
             if (obj.transform.position.x + layer.chunkWidth / 2f < leftLimit)
             {
                 var rightmostX = GetRightmostX(layer.spawnedObjects);
+                var newChunk = layer.possibleChunks[Random.Range(0, layer.possibleChunks.Count)];
 
-                obj.transform.position = new Vector3(
-                    rightmostX + layer.chunkWidth,
-                    obj.transform.position.y,
-                    obj.transform.position.z
+                var spawned = Instantiate(
+                    newChunk,
+                    new Vector3(
+                        rightmostX + layer.chunkWidth,
+                        obj.transform.position.y,
+                        obj.transform.position.z
+                    ),
+                    obj.transform.rotation,
+                    obj.transform.parent
                 );
+
+                layer.toAdd.Add(spawned);
+                layer.toRemove.Add(obj);
             }
+        }
+
+        foreach (var obj in layer.toRemove)
+        {
+            layer.spawnedObjects.Remove(obj);
+            Destroy(obj);
+        }
+
+        foreach (var obj in layer.toAdd)
+        {
+            layer.spawnedObjects.Add(obj);
         }
     }
 
@@ -55,19 +81,22 @@ public class DynamicParallaxManager : MonoBehaviour
         foreach (var obj in objects)
         {
             if (obj.transform.position.x > rightmostX)
-            {
                 rightmostX = obj.transform.position.x;
-            }
         }
 
         return rightmostX;
     }
 
-    public void RegisterObject(GameObject obj, int layerIndex)
+    public void RegisterObject(GameObject obj, int layerIndex, List<GameObject> possibleChunks)
     {
         if (layerIndex >= 0 && layerIndex < layers.Count)
         {
             layers[layerIndex].spawnedObjects.Add(obj);
+
+            if (layers[layerIndex].possibleChunks.Count == 0)
+            {
+                layers[layerIndex].possibleChunks = possibleChunks;
+            }
         }
     }
 }
