@@ -3,12 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ObstacleController : MonoBehaviour
 {
+    [SerializeField] private Transform smokeStartPoint;
+    [SerializeField] private GameObject smokePrefab;
+    [SerializeField] private bool useDoubleSpeed = false;
+
     private Rigidbody2D rb;
     private float speed;
     private AudioSource crashAudioSource;
     //private ParticleSystem smokeParticleSystem;
-    [SerializeField] private Transform smokeStartPoint;
-    [SerializeField] private GameObject smokePrefab;
 
     void Awake()
     {
@@ -19,7 +21,7 @@ public class ObstacleController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocityX = -speed;
+        rb.linearVelocityX = useDoubleSpeed ? -(speed * 2f) : -speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

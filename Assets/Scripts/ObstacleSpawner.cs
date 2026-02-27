@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ObstacleData
+{
+    public GameObject prefab;
+    public List<Sprite> sprites;
+    public bool isAmbulance;
+}
+
 public class ObstacleSpawner : MonoBehaviour
 {
-    [Header("Sprites")]
-    [SerializeField] private List<Sprite> carsSprites;
-    [SerializeField] private List<Sprite> motorcycleSprites;
+    [Header("Obstacles")]
+    [SerializeField] private List<ObstacleData> obstacles;
 
     [Header("Spawn")]
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField, Range(1f, 5f)] private float spawnInterval = 5f;
     [SerializeField] private float minimumSpawnInterval = 0.5f;
-
-
-    [Header("Prefabs")]
-    [SerializeField] private GameObject carPrefab;
-    [SerializeField] private GameObject motorcyclePrefab;
 
     [Header("Score manager")]
     [SerializeField] private ScoreManager scoreManager;
@@ -25,6 +27,8 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField, Range(3f, 15f)] private float minimumSpeed = 5f;
     [SerializeField, Range(3f, 15f)] private float maximumSpeed = 8f;
     [SerializeField] private float topSpeed = 30f;
+    [SerializeField, Range(0f, 1f)] private float ambulanceProbability = 0.2f;
+    [SerializeField] private float ambulanceIncreaseRate = 0.05f;
 
     public static ObstacleSpawner Instance { get; private set; }
 
@@ -33,7 +37,10 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
     void Start()
@@ -48,11 +55,11 @@ public class ObstacleSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
-            SpawnObstacle();
 
+            SpawnObstacle();
             spawnCounter++;
 
-            if (spawnCounter == WAVES)
+            if (spawnCounter >= WAVES)
             {
                 IncreaseDifficulty();
                 spawnCounter = 0;
@@ -62,21 +69,31 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnObstacle()
     {
-        var spawnCar = Random.Range(0, 2) == 0;
-        var obstacle = InstantiatePrefab(spawnCar ? carPrefab : motorcyclePrefab);
+        if (obstacles == null || obstacles.Count == 0) return;
 
-        if (spawnCar) obstacle.GetComponent<SpriteRenderer>().sprite = GetRandomCarSprite();
-        else obstacle.GetComponent<SpriteRenderer>().sprite = GetRandomMotorcycleSprite();
-    }
+        ObstacleData selectedObstacle;
 
-    private Sprite GetRandomCarSprite()
-    {
-        return carsSprites[Random.Range(0, carsSprites.Count)];
-    }
+        if (Random.value < ambulanceProbability)
+        {
+            selectedObstacle = obstacles.Find(obstacle => obstacle.isAmbulance);
 
-    private Sprite GetRandomMotorcycleSprite()
-    {
-        return motorcycleSprites[Random.Range(0, motorcycleSprites.Count)];
+            if (selectedObstacle == null) selectedObstacle = obstacles[Random.Range(0, obstacles.Count)];
+        }
+        else
+        {
+            var normalObstacles = obstacles.FindAll(obstacle => !obstacle.isAmbulance);
+
+            if (normalObstacles.Count > 0) selectedObstacle = normalObstacles[Random.Range(0, normalObstacles.Count)];
+            else selectedObstacle = obstacles[Random.Range(0, obstacles.Count)];
+        }
+
+        var obstacle = InstantiatePrefab(selectedObstacle.prefab);
+
+        if (selectedObstacle.sprites != null && selectedObstacle.sprites.Count > 0)
+        {
+            var sprite = selectedObstacle.sprites[Random.Range(0, selectedObstacle.sprites.Count)];
+            obstacle.GetComponent<SpriteRenderer>().sprite = sprite;
+        }
     }
 
     private GameObject InstantiatePrefab(GameObject prefab)
@@ -85,7 +102,11 @@ public class ObstacleSpawner : MonoBehaviour
 
         return Instantiate(
             prefab,
-            new Vector3(randomSpawnPoint.position.x, randomSpawnPoint.position.y, prefab.transform.position.z),
+            new Vector3(
+                randomSpawnPoint.position.x,
+                randomSpawnPoint.position.y,
+                prefab.transform.position.z
+            ),
             prefab.transform.rotation
         );
     }
@@ -97,7 +118,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void IncreaseDifficulty()
     {
-        if (spawnInterval < minimumSpawnInterval)
+        if (spawnInterval > minimumSpawnInterval)
         {
             spawnInterval *= 0.9f;
         }
@@ -106,6 +127,12 @@ public class ObstacleSpawner : MonoBehaviour
         {
             minimumSpeed *= 1.1f;
             maximumSpeed *= 1.1f;
+        }
+
+        if (ambulanceProbability < 1f)
+        {
+            ambulanceProbability += ambulanceIncreaseRate;
+            ambulanceProbability = Mathf.Clamp01(ambulanceProbability);
         }
     }
 }
