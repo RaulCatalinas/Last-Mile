@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba92bef9df1645c19d257c57990d733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KinematicMover
-  parallaxSpeed: 2.45
+  parallaxSpeed: 0
 --- !u!212 &4584418119377831081
 SpriteRenderer:
   serializedVersion: 2

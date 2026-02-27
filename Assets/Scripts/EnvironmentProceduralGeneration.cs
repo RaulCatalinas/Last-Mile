@@ -1,137 +1,98 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnvironmentProceduralGeneration : MonoBehaviour
 {
-    [Header("Chunks")]
-    [SerializeField] private List<GameObject> firstLayerChunks;
-    [SerializeField] private List<GameObject> secondLayerChunks;
+    [Header("First Layer - Buildings")]
+    [SerializeField] private List<GameObject> buildingChunks;
+    [SerializeField] private Transform buildingRightSpawnPoint;
+    [SerializeField] private Transform buildingLeftSpawnPoint;
+
+    [Header("Second Layer - Ground")]
+    [SerializeField] private List<GameObject> groundChunks;
+    [SerializeField] private Transform groundRightSpawnPoint;
+    [SerializeField] private Transform groundLeftSpawnPoint;
+
+    [Header("Settings")]
     [SerializeField] private int initialChunks = 5;
-    [SerializeField] private float chunkWidth = 10f;
+    [SerializeField] private float buildingChunkWidth = 10f;
+    [SerializeField] private float groundChunkWidth = 10f;
 
-    [Header("Spawn")]
-    [SerializeField, Range(1f, 50f)] private float spawnInterval = 2f;
+    [Header("Dynamic Parallax")]
+    [SerializeField] private DynamicParallaxManager dynamicParallaxManager;
 
-    [Header("Spawn Points")]
-    [SerializeField] private Transform firstLayerStartRightPoint;
-    [SerializeField] private Transform firstLayerStartLeftPoint;
+    [Header("Building Parallax Spawn Points")]
+    [SerializeField] private Transform buildingParallaxRightSpawnPoint;
+    [SerializeField] private Transform buildingParallaxLeftSpawnPoint;
 
-    [Header("Background Spawn Points")]
-    [SerializeField] private Transform secondLayerStartRightPoint;
-    [SerializeField] private Transform secondLayerStartLeftPoint;
-
-    [Header("Parallax")]
-    [SerializeField] private Transform firstLayerStartRightPointParallax;
-    [SerializeField] private Transform firstLayerStartLeftPointParallax;
-
-    private float firstLayerNextRightX;
-    private float firstLayerNextLeftX;
-    private float parallaxNextRightX;
-    private float parallaxNextLeftX;
-
-    void Awake()
-    {
-        firstLayerNextRightX = firstLayerStartRightPoint.position.x;
-        firstLayerNextLeftX = firstLayerStartLeftPoint.position.x;
-
-        parallaxNextRightX = firstLayerStartRightPointParallax.position.x;
-        parallaxNextLeftX = firstLayerStartLeftPointParallax.position.x;
-    }
+    private float buildingNextRightX;
+    private float buildingNextLeftX;
+    private float groundNextRightX;
+    private float groundNextLeftX;
 
     void Start()
     {
-        StartCoroutine(SpawnRoutine());
-        SpawnSecondLayerChunk();
+        buildingNextRightX = 0;
+        buildingNextLeftX = 0;
+        groundNextRightX = groundRightSpawnPoint.position.x;
+        groundNextLeftX = groundLeftSpawnPoint.position.x;
+
+        SpawnGroundChunk();
 
         for (int i = 0; i < initialChunks; i++)
         {
-            SpawnFirstLayerChunk(
-                ref firstLayerNextRightX,
-                ref firstLayerNextLeftX,
-                firstLayerStartRightPoint,
-                firstLayerStartLeftPoint
-            );
-        }
-
-        for (int i = 0; i < initialChunks; i++)
-        {
-            SpawnFirstLayerChunk(
-                ref parallaxNextRightX,
-                ref parallaxNextLeftX,
-                firstLayerStartRightPointParallax,
-                firstLayerStartLeftPointParallax
-            );
+            SpawnBuildingChunk();
         }
     }
 
-    IEnumerator SpawnRoutine()
+    void SpawnBuildingChunk()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(spawnInterval);
+        var rightChunk = buildingChunks[Random.Range(0, buildingChunks.Count)];
+        var leftChunk = buildingChunks[Random.Range(0, buildingChunks.Count)];
 
-            parallaxNextRightX -= chunkWidth * initialChunks;
-            parallaxNextLeftX -= chunkWidth * initialChunks;
+        var spawnRightX = buildingParallaxRightSpawnPoint.position.x + buildingNextRightX;
+        var spawnLeftX = buildingParallaxLeftSpawnPoint.position.x + buildingNextLeftX;
 
-            for (int i = 0; i < initialChunks; i++)
-            {
-                SpawnFirstLayerChunk(
-                    ref parallaxNextRightX,
-                    ref parallaxNextLeftX,
-                    firstLayerStartRightPointParallax,
-                    firstLayerStartLeftPointParallax
-                );
-            }
-        }
+        var right = Instantiate(
+            rightChunk,
+            new Vector3(spawnRightX, buildingParallaxRightSpawnPoint.position.y, 0),
+            Quaternion.identity,
+            buildingRightSpawnPoint
+        );
+        var left = Instantiate(
+            leftChunk,
+            new Vector3(spawnLeftX, buildingParallaxLeftSpawnPoint.position.y, 0),
+            Quaternion.Euler(0, 0, 180),
+            buildingLeftSpawnPoint
+        );
+
+        dynamicParallaxManager.RegisterObject(right, 0);
+        dynamicParallaxManager.RegisterObject(left, 0);
+
+        buildingNextRightX += buildingChunkWidth;
+        buildingNextLeftX += buildingChunkWidth;
     }
 
-    void SpawnFirstLayerChunk(
-        ref float nextRightX,
-        ref float nextLeftX,
-        Transform rightParent,
-        Transform leftParent
-    )
+    void SpawnGroundChunk()
     {
-        var rightChunk = firstLayerChunks[Random.Range(0, firstLayerChunks.Count)];
-        var leftChunk = firstLayerChunks[Random.Range(0, firstLayerChunks.Count)];
+        var rightChunk = groundChunks[Random.Range(0, groundChunks.Count)];
+        var leftChunk = groundChunks[Random.Range(0, groundChunks.Count)];
 
         Instantiate(
             rightChunk,
-            new Vector3(nextRightX, rightParent.position.y, 0),
+            new Vector3(groundNextRightX, groundRightSpawnPoint.position.y, 0),
             Quaternion.identity,
-            rightParent
+            groundRightSpawnPoint
         );
-
         Instantiate(
             leftChunk,
-            new Vector3(nextLeftX, leftParent.position.y, 0),
-            Quaternion.Euler(0, 0, 180),
-            leftParent
-        );
-
-        nextRightX += chunkWidth;
-        nextLeftX -= chunkWidth;
-    }
-
-    void SpawnSecondLayerChunk()
-    {
-        var chunkRight = secondLayerChunks[Random.Range(0, secondLayerChunks.Count)];
-        var chunkLeft = secondLayerChunks[Random.Range(0, secondLayerChunks.Count)];
-
-        Instantiate(
-            chunkRight,
-            secondLayerStartRightPoint.position,
+            new Vector3(groundNextLeftX,
+            groundLeftSpawnPoint.position.y, 0),
             Quaternion.identity,
-            secondLayerStartRightPoint
+            groundLeftSpawnPoint
         );
 
-
-        Instantiate(
-            chunkLeft,
-            secondLayerStartLeftPoint.position,
-            Quaternion.identity,
-            secondLayerStartLeftPoint
-        );
+        groundNextRightX += groundChunkWidth;
+        groundNextLeftX -= groundChunkWidth;
     }
 }
