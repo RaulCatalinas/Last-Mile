@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public static bool isGameOver { get; private set; }
+    public static PlayerStats selectedPlayer { get; private set; }
 
     void Awake()
     {
@@ -18,6 +19,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SelectPlayer(PlayerStats stats)
+    {
+        selectedPlayer = stats;
+    }
+
     public void StartGame()
     {
         isGameOver = false;
@@ -29,7 +35,7 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit();
+        Application.Quit();
 #endif
     }
 

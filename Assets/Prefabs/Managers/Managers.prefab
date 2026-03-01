@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   scoreText: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  characterSelectionPanel: {fileID: 0}
+  mainMenuPanel: {fileID: 0}
 --- !u!1 &1594272726301963852
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   uiManager: {fileID: 3699767514852340488}
-  scoreRate: 1
+  scoreInterval: 1
 --- !u!1 &3613752375532921225
 GameObject:
   m_ObjectHideFlags: 0

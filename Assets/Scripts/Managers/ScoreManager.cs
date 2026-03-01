@@ -1,14 +1,13 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private UIManager uiManager;
-    [SerializeField] private int scoreRate = 1;
+    [SerializeField] private float scoreInterval = 1f;
 
     public static ScoreManager Instance { get; private set; }
 
-    private float floatScore = 0f;
     public int score { get; private set; }
 
     void Awake()
@@ -16,15 +15,22 @@ public class ScoreManager : MonoBehaviour
         if (Instance == null) Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        if (GameManager.isGameOver) return;
+        StartCoroutine(ScoreRoutine());
+    }
 
-        floatScore += scoreRate * Time.deltaTime;
-        score = (int)Math.Round(floatScore, MidpointRounding.AwayFromZero);
+    IEnumerator ScoreRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(scoreInterval);
 
-        uiManager.IncreaseScore(score);
+            if (GameManager.isGameOver) yield break;
+
+            score += (int)GameManager.selectedPlayer.scoreMultiplier;
+            uiManager.IncreaseScore(score);
+        }
     }
 
     public void SaveMaxScore()

@@ -5,6 +5,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] private GameObject characterSelectionPanel;
+    [SerializeField] private GameObject mainMenuPanel;
 
     public static UIManager Instance { get; private set; }
 
@@ -37,5 +39,12 @@ public class UIManager : MonoBehaviour
     public void ShowGameOverPanel()
     {
         gameOverPanel.SetActive(true);
+    }
+
+
+    public void OpenCharacterSelection()
+    {
+        mainMenuPanel.SetActive(false);
+        characterSelectionPanel.SetActive(true);
     }
 }

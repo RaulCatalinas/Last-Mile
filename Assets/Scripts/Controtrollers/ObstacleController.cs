@@ -10,7 +10,6 @@ public class ObstacleController : MonoBehaviour
     private Rigidbody2D rb;
     private float speed;
     private AudioSource crashAudioSource;
-    //private ParticleSystem smokeParticleSystem;
 
     void Awake()
     {

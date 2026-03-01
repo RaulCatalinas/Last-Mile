@@ -1296,12 +1296,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8771932287747386650, guid: 109ca8b66012118448ba10c8d9db302a, type: 3}
   m_PrefabInstance: {fileID: 693974150}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &764753794 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 149221119090978078, guid: efae7538f8c19104a9e55159cce8992e, type: 3}
-  m_PrefabInstance: {fileID: 138177705}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &771325224
+--- !u!1001 &734363448
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1313,21 +1308,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 308930222212486323, guid: 59f87ab13f5f9cc4080b42246690abd6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3691184765144704527, guid: 59f87ab13f5f9cc4080b42246690abd6, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1987595011}
     - target: {fileID: 7178058012228703156, guid: 59f87ab13f5f9cc4080b42246690abd6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.11
+      value: -8.29
       objectReference: {fileID: 0}
     - target: {fileID: 7178058012228703156, guid: 59f87ab13f5f9cc4080b42246690abd6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.587747
+      value: 2.751808
       objectReference: {fileID: 0}
     - target: {fileID: 7178058012228703156, guid: 59f87ab13f5f9cc4080b42246690abd6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1366,6 +1357,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59f87ab13f5f9cc4080b42246690abd6, type: 3}
+--- !u!4 &764753794 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 149221119090978078, guid: efae7538f8c19104a9e55159cce8992e, type: 3}
+  m_PrefabInstance: {fileID: 138177705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &810191679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2905,9 +2901,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1408150765}
-  - {fileID: 771325224}
   - {fileID: 2129811340}
   - {fileID: 283745751}
   - {fileID: 1180395740}
   - {fileID: 337987566}
   - {fileID: 1459737869}
+  - {fileID: 734363448}
