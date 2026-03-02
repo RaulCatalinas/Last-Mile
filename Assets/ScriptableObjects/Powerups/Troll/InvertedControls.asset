@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: InvertedControls
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpData
   powerUpName: Min Glitch
-  esPowerUpName: 
+  esPowerUpName: Fallo Mental
   description: 'Controls distorted for 2 seconds.
 
     Stay focused.'
-  esDescription: 
+  esDescription: "Controles alterados durante 2 segundos.\nmant\xE9n la concentraci\xF3n."
   icon: {fileID: 0}
   isTroll: 1
   type: 7

@@ -3921,12 +3921,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 7707705237539192647, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}
+      propertyPath: powerUps.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707705237539192647, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}
+      propertyPath: trollPowerUps.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707705237539192647, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}
+      propertyPath: 'trollPowerUps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 644794f2f663c4aaebaa9d61913afeba, type: 2}
+    - target: {fileID: 7707705237539192647, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}
+      propertyPath: 'trollPowerUps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 36f82b842f2564e50808691eb6de30b9, type: 2}
+    - target: {fileID: 7707705237539192647, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}
+      propertyPath: 'trollPowerUps.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ac4e840939e3b45c5ba4a447495a262e, type: 2}
+    - target: {fileID: 7707705237539192647, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}
+      propertyPath: 'trollPowerUps.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f749762e9e754ef2b3d07f9fb6cd191, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6550254107682956753, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3047849892310639959, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 932642589}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdfcd3d39b79c4e539237a4e6f678172, type: 3}

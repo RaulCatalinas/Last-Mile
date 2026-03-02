@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LoseLife
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpData
   powerUpName: Fragile Pulse
-  esPowerUpName: 
+  esPowerUpName: "Latido Fr\xE1gil"
   description: Feel the risk.
-  esDescription: 
+  esDescription: Siente el riesgo.
   icon: {fileID: 0}
   isTroll: 1
   type: 6
