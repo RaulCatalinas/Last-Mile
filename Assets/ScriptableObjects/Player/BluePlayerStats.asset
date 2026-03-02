@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   sprite: {fileID: -6110656803992641779, guid: cd8bd66e6b4d7ec45aa3be11b56a5bca, type: 3}
   lives: 3
-  invincibilityTime: 1.5
+  invincibilityTime: 2
   scoreMultiplier: 1
   lateralSpeed: 4.5
   acceleration: 0.5

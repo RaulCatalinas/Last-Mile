@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,16 +9,54 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerStats stats;
+    private SpriteRenderer spriteRenderer;
+    private bool isInvincible = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GameManager.selectedPlayer;
-        GetComponent<SpriteRenderer>().sprite = stats.sprite;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = stats.sprite;
     }
 
     void FixedUpdate()
     {
         rb.linearVelocityY = stats.lateralSpeed * joystick.Vertical;
+    }
+
+    IEnumerator FlashRed()
+    {
+        isInvincible = true;
+        float flashDuration = 0.1f;
+        int flashCount = (int)(stats.invincibilityTime / (flashDuration * 2));
+
+        for (int i = 0; i < flashCount; i++)
+        {
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(flashDuration);
+            spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(flashDuration);
+        }
+
+        isInvincible = false;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.collider.CompareTag("Obstacle")) return;
+        if (isInvincible) return;
+
+        if (GameManager.isGameOver)
+        {
+            ScoreManager.Instance.SaveMaxScore();
+            GameManager.Instance.GameOver();
+            UIManager.Instance.ShowGameOverPanel();
+
+            return;
+        }
+
+        StartCoroutine(FlashRed());
+        GameManager.Instance.LoseLife();
     }
 }

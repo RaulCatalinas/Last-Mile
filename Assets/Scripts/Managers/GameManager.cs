@@ -6,16 +6,14 @@ public class GameManager : MonoBehaviour
     public static bool isGameOver { get; private set; }
     public static PlayerStats selectedPlayer { get; private set; }
 
+    private int playerLives;
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -26,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        playerLives = selectedPlayer.lives;
         isGameOver = false;
         LoadScene("City");
     }
@@ -46,14 +45,22 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        isGameOver = true;
         Time.timeScale = 0f;
     }
 
     public void RestartGame()
     {
+        playerLives = selectedPlayer.lives;
         isGameOver = false;
         Time.timeScale = 1f;
+
         LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    public void LoseLife()
+    {
+        playerLives--;
+
+        if (playerLives <= 0) isGameOver = true;
     }
 }

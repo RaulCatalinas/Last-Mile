@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(AudioSource))]
 public class ObstacleController : MonoBehaviour
 {
     [SerializeField] private Transform smokeStartPoint;
@@ -9,18 +9,19 @@ public class ObstacleController : MonoBehaviour
 
     private Rigidbody2D rb;
     private float speed;
-    private AudioSource crashAudioSource;
 
     void Awake()
     {
-        speed = ObstacleSpawner.Instance.GetRandomSpeed();
+        var initialSpeed = ObstacleSpawner.Instance.GetRandomSpeed();
+
+        speed = useDoubleSpeed ? initialSpeed * 2f : initialSpeed;
+
         rb = GetComponent<Rigidbody2D>();
-        crashAudioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocityX = useDoubleSpeed ? -(speed * 2f) : -speed;
+        rb.linearVelocityX = -speed;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -30,13 +31,17 @@ public class ObstacleController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (!collision.collider.CompareTag("Player")) return;
+
+        AudioManager.Instance.PlayCrash(GameManager.isGameOver, speed);
+
+        if (GameManager.isGameOver)
         {
-            ScoreManager.Instance.SaveMaxScore();
-            crashAudioSource.Play();
             Instantiate(smokePrefab, smokeStartPoint.position, Quaternion.identity);
-            GameManager.Instance.GameOver();
-            UIManager.Instance.ShowGameOverPanel();
+
+            return;
         }
+
+        Destroy(gameObject);
     }
 }
