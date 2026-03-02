@@ -49,9 +49,7 @@ public class PlayerController : MonoBehaviour
 
         if (GameManager.isGameOver)
         {
-            ScoreManager.Instance.SaveMaxScore();
             GameManager.Instance.GameOver();
-            UIManager.Instance.ShowGameOverPanel();
 
             return;
         }

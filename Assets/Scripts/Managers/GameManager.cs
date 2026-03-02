@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        UIManager.Instance.ShowGameOverPanel();
+        ScoreManager.Instance.SaveMaxScore();
+
         Time.timeScale = 0f;
     }
 
