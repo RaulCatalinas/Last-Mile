@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.sprite = stats.sprite;
     }
 
+    void Start()
+    {
+        UIManager.Instance.InitializeLives(stats.lives);
+    }
+
     void FixedUpdate()
     {
         rb.linearVelocityY = stats.lateralSpeed * joystick.Vertical;
@@ -56,5 +61,6 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(FlashRed());
         GameManager.Instance.LoseLife();
+        UIManager.Instance.UpdateLives(GameManager.playerLives);
     }
 }

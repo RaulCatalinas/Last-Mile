@@ -5,8 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public static bool isGameOver { get; private set; }
     public static PlayerStats selectedPlayer { get; private set; }
-
-    private int playerLives;
+    public static int playerLives { get; private set; }
 
     void Awake()
     {
