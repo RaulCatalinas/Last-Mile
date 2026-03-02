@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265395c2da0cf4896910f0ed97c29d9c, type: 3}
+  m_Name: ScoreMultiplier
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpData
+  powerUpName: Score Frenzy
+  esPowerUpName: Furia x2
+  description: 'Score x2 for 6 seconds.
+
+    Make every scond count.'
+  esDescription: "Puntuac\xF3n x2 durante 6 segundos.\nHaz que cada segundo valga
+    el doble."
+  icon: {fileID: 0}
+  isTroll: 0
+  type: 1
+  duration: 6
+  value: 2
+  spawnChance: 0.1
