@@ -8,9 +8,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] private GameObject characterSelectionPanel;
     [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private List<HeartController> hearts;
+    [SerializeField] private GameObject heartPrefab;
+    [SerializeField] private Transform heartsContainer;
 
     public static UIManager Instance { get; private set; }
+
+    private List<HeartController> hearts = new List<HeartController>();
 
     void Awake()
     {
@@ -43,7 +46,6 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
-
     public void OpenCharacterSelection()
     {
         mainMenuPanel.SetActive(false);
@@ -60,9 +62,12 @@ public class UIManager : MonoBehaviour
 
     public void InitializeLives(int totalLives)
     {
-        for (int i = 0; i < hearts.Count; i++)
+        for (int i = 0; i < totalLives; i++)
         {
-            if (i < totalLives) hearts[i].EnableHeart();
+            var heartObj = Instantiate(heartPrefab, heartsContainer);
+            var heart = heartObj.GetComponent<HeartController>();
+
+            hearts.Add(heart);
         }
     }
 }

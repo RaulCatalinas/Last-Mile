@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(flashDuration);
+
             spriteRenderer.color = Color.white;
             yield return new WaitForSeconds(flashDuration);
         }
