@@ -49,8 +49,8 @@ public class PowerUpController : MonoBehaviour
     {
         if (!collision.collider.CompareTag("Player")) return;
 
-        GameManager.Instance.ActivatePowerUp(powerUpData);
-        AudioManager.Instance.PlayPowerUp();
+        PowerUpsManager.Instance.ActivatePowerUp(powerUpData);
+        AudioManager.Instance.PlayPowerUp(powerUpData.isTroll);
         Destroy(gameObject);
     }
 }

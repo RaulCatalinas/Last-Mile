@@ -19,6 +19,7 @@ MonoBehaviour:
     Stay focused.'
   esDescription: "Controles alterados durante 2 segundos.\nmant\xE9n la concentraci\xF3n."
   icon: {fileID: -8835229465114879995, guid: 5d4334fe4623b1841b9fb1baf8e24e18, type: 3}
+  isTroll: 1
   type: 7
   duration: 2
   value: 0

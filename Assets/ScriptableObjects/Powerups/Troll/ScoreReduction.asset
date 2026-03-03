@@ -22,6 +22,7 @@ MonoBehaviour:
     No todo suma como
     esperas.'
   icon: {fileID: -6069092815656458106, guid: 5d4334fe4623b1841b9fb1baf8e24e18, type: 3}
+  isTroll: 1
   type: 5
   duration: 4
   value: 0.5

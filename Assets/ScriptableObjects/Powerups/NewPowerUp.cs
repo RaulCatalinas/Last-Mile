@@ -23,6 +23,7 @@ public class PowerUpData : ScriptableObject
     [TextArea] public string description;
     [TextArea] public string esDescription;
     public Sprite icon;
+    public bool isTroll;
 
     [Header("Effect Settings")]
     public PowerUpType type;

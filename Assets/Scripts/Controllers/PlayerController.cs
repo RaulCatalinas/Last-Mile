@@ -10,9 +10,14 @@ public class PlayerController : MonoBehaviour
     private PlayerStats stats;
     private SpriteRenderer spriteRenderer;
     private bool isInvincible = false;
+    private float speedMultiplier = 1f;
+    private bool invertedControls = false;
+
+    public static PlayerController Instance { get; private set; }
 
     void Awake()
     {
+        Instance = this;
         rb = GetComponent<Rigidbody2D>();
         stats = GameManager.selectedPlayer;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -26,7 +31,28 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocityY = stats.lateralSpeed * joystick.Vertical;
+        var vertical = invertedControls ? -joystick.Vertical : joystick.Vertical;
+        rb.linearVelocityY = stats.lateralSpeed * speedMultiplier * vertical;
+    }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
+    }
+
+    public void SetInvertedControls(bool inverted)
+    {
+        invertedControls = inverted;
+    }
+
+    public void SetInvincible(bool invincible)
+    {
+        isInvincible = invincible;
+    }
+
+    public SpriteRenderer GetSpriteRenderer()
+    {
+        return spriteRenderer;
     }
 
     IEnumerator FlashRed()
@@ -49,28 +75,21 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Obstacle")) OnCrash();
-        if (collision.collider.CompareTag("PowerUp")) OnPowerUpCollected();
-    }
-
-    void OnCrash()
-    {
-        if (isInvincible) return;
+        if (!collision.collider.CompareTag("Obstacle")) return;
+        if (isInvincible)
+        {
+            Destroy(collision.gameObject);
+            return;
+        }
 
         if (GameManager.isGameOver)
         {
             GameManager.Instance.GameOver();
-
             return;
         }
 
         StartCoroutine(FlashRed());
         GameManager.Instance.LoseLife();
         UIManager.Instance.UpdateLives(GameManager.playerLives);
-    }
-
-    void OnPowerUpCollected()
-    {
-        Debug.Log($"Power-Up collected: {GameManager.activePowerUp.powerUpName}");
     }
 }

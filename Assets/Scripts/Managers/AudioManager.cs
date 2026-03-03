@@ -20,6 +20,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float maxSpeedForEffect = 20f;
     [SerializeField] private float maxPitchReduction = 0.2f;
 
+    [Header("PowerUp Settings")]
+    [SerializeField] private float normalPowerUpPitch = 1f;
+    [SerializeField] private float trollPowerUpPitch = 0.6f;
+
     private AudioSource audioSource;
 
     private void Awake()
@@ -50,8 +54,10 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = 1f;
     }
 
-    public void PlayPowerUp()
+    public void PlayPowerUp(bool isTroll)
     {
+        audioSource.pitch = isTroll ? trollPowerUpPitch : normalPowerUpPitch;
         audioSource.PlayOneShot(powerUpClip);
+        audioSource.pitch = 1f;
     }
 }

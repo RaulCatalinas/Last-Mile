@@ -17,6 +17,7 @@ MonoBehaviour:
   description: Feel the risk.
   esDescription: Siente el riesgo.
   icon: {fileID: 8017803355992842639, guid: 5d4334fe4623b1841b9fb1baf8e24e18, type: 3}
+  isTroll: 1
   type: 6
   duration: 0
   value: 1

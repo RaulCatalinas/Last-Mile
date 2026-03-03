@@ -17,6 +17,7 @@ MonoBehaviour:
   description: Increased protection... at a cost.
   esDescription: "M\xE1s protecci\xF3n... a un precio."
   icon: {fileID: -8081004545549444908, guid: 5d4334fe4623b1841b9fb1baf8e24e18, type: 3}
+  isTroll: 1
   type: 4
   duration: 3
   value: 0.25
