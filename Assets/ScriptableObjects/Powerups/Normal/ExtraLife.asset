@@ -20,8 +20,7 @@ MonoBehaviour:
   esDescription: 'Gana +1 vida.
 
     Un error menos en tu carrera.'
-  icon: {fileID: 0}
-  isTroll: 0
+  icon: {fileID: 3192519947193676115, guid: aea3054501993104893f1f9be3e07ad4, type: 3}
   type: 2
   duration: 0
   value: 1

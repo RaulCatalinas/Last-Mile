@@ -16,9 +16,11 @@ MonoBehaviour:
   esPowerUpName: Escudo Pesado
   description: Increased protection... at a cost.
   esDescription: "M\xE1s protecci\xF3n... a un precio."
-  icon: {fileID: 0}
-  isTroll: 1
+  icon: {fileID: -8081004545549444908, guid: 5d4334fe4623b1841b9fb1baf8e24e18, type: 3}
   type: 4
   duration: 3
   value: 0.25
   spawnChance: 0.1
+  lifetime: 9
+  warningTime: 3
+  trollReward: {fileID: 11400000, guid: 98d81134473184eb69256ee075b9cc83, type: 2}

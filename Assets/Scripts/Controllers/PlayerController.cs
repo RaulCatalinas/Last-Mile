@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -50,7 +49,12 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.collider.CompareTag("Obstacle")) return;
+        if (collision.collider.CompareTag("Obstacle")) OnCrash();
+        if (collision.collider.CompareTag("PowerUp")) OnPowerUpCollected();
+    }
+
+    void OnCrash()
+    {
         if (isInvincible) return;
 
         if (GameManager.isGameOver)
@@ -63,5 +67,10 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(FlashRed());
         GameManager.Instance.LoseLife();
         UIManager.Instance.UpdateLives(GameManager.playerLives);
+    }
+
+    void OnPowerUpCollected()
+    {
+        Debug.Log($"Power-Up collected: {GameManager.activePowerUp.powerUpName}");
     }
 }

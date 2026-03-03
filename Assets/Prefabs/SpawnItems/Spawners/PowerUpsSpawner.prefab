@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6383908242751937707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 647345259208808566}
+  - component: {fileID: 6543277117378500016}
+  m_Layer: 0
+  m_Name: PowerUpsSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &647345259208808566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6383908242751937707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6543277117378500016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6383908242751937707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d09a1124105c43f7b76df5c8f88bfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpsManager
+  powerUps:
+  - {fileID: 11400000, guid: bca4a8ce822bf43c8998508759d474cd, type: 2}
+  - {fileID: 11400000, guid: 001eb53ac8b6046e892f968e3b3caf02, type: 2}
+  - {fileID: 11400000, guid: 5427d1aadcb1f424883e0ae10aa3fa7b, type: 2}
+  - {fileID: 11400000, guid: 98d81134473184eb69256ee075b9cc83, type: 2}
+  trollPowerUps:
+  - {fileID: 11400000, guid: 644794f2f663c4aaebaa9d61913afeba, type: 2}
+  - {fileID: 11400000, guid: 36f82b842f2564e50808691eb6de30b9, type: 2}
+  - {fileID: 11400000, guid: ac4e840939e3b45c5ba4a447495a262e, type: 2}
+  - {fileID: 11400000, guid: 6f749762e9e754ef2b3d07f9fb6cd191, type: 2}
+  powerUpPrefab: {fileID: 8735656096648482358, guid: a57f04ac08ea8834bbe026acec283bd2, type: 3}
+  player: {fileID: 0}
+  spawnPoints: []
+  spawnInterval: 2.5
+  trollProbability: 0.3
+  minDistanceFromPlayer: 1.5

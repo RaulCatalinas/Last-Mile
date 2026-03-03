@@ -19,9 +19,11 @@ MonoBehaviour:
     Make every scond count.'
   esDescription: "Puntuac\xF3n x2 durante 6 segundos.\nHaz que cada segundo valga
     el doble."
-  icon: {fileID: 0}
-  isTroll: 0
+  icon: {fileID: -6539450702062991265, guid: aea3054501993104893f1f9be3e07ad4, type: 3}
   type: 1
   duration: 6
   value: 2
   spawnChance: 0.1
+  lifetime: 6
+  warningTime: 2
+  trollReward: {fileID: 0}

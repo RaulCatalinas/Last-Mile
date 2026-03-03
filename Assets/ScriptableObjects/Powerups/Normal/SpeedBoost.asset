@@ -19,9 +19,11 @@ MonoBehaviour:
     Faster run. Higher risk.'
   esDescription: "+25% de velocidad durante 4 segundos.\nM\xE1s r\xE1pido. M\xE1s
     riesgo."
-  icon: {fileID: 0}
-  isTroll: 0
+  icon: {fileID: -651614755396901682, guid: aea3054501993104893f1f9be3e07ad4, type: 3}
   type: 0
   duration: 4
   value: 0.25
   spawnChance: 0.12
+  lifetime: 6
+  warningTime: 2
+  trollReward: {fileID: 0}

@@ -2778,6 +2778,8 @@ MonoBehaviour:
   gameOverPanel: {fileID: 0}
   characterSelectionPanel: {fileID: 1036657013}
   mainMenuPanel: {fileID: 657456914}
+  heartPrefab: {fileID: 0}
+  heartsContainer: {fileID: 0}
 --- !u!1 &1466830333
 GameObject:
   m_ObjectHideFlags: 0

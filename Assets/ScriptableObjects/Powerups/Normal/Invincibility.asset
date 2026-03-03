@@ -21,9 +21,11 @@ MonoBehaviour:
 
     Nada puede tocarte... por
     ahora.'
-  icon: {fileID: 0}
-  isTroll: 0
+  icon: {fileID: -5029437006618768112, guid: aea3054501993104893f1f9be3e07ad4, type: 3}
   type: 3
   duration: 2.5
   value: 0
   spawnChance: 0.08
+  lifetime: 6
+  warningTime: 2
+  trollReward: {fileID: 0}

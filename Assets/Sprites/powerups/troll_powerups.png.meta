@@ -1,0 +1,348 @@
+fileFormatVersion: 2
+guid: 5d4334fe4623b1841b9fb1baf8e24e18
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8081004545549444908
+    second: troll_powerups_0
+  - first:
+      213: -6069092815656458106
+    second: troll_powerups_1
+  - first:
+      213: 8017803355992842639
+    second: troll_powerups_2
+  - first:
+      213: -8835229465114879995
+    second: troll_powerups_3
+  - first:
+      213: 8643374770653146070
+    second: troll_powerups_4
+  - first:
+      213: -2999733671520667826
+    second: troll_powerups_5
+  - first:
+      213: 3643986974593120609
+    second: troll_powerups_6
+  - first:
+      213: 6322508341566690444
+    second: troll_powerups_7
+  - first:
+      213: -8357867536887969898
+    second: troll_powerups_8
+  - first:
+      213: 6707074132220104296
+    second: troll_powerups_9
+  - first:
+      213: 2686752229748483403
+    second: troll_powerups_10
+  - first:
+      213: -6205728341419928159
+    second: troll_powerups_11
+  - first:
+      213: -3276510967338269532
+    second: troll_powerups_12
+  - first:
+      213: -1158068421868980771
+    second: troll_powerups_13
+  - first:
+      213: 6128655205049702484
+    second: troll_powerups_14
+  - first:
+      213: -1662326691592426621
+    second: troll_powerups_15
+  - first:
+      213: -2442515272197591022
+    second: troll_powerups_16
+  - first:
+      213: 3940827185136223717
+    second: troll_powerups_17
+  - first:
+      213: -1823347093387572891
+    second: troll_powerups_18
+  - first:
+      213: -4208161185700170680
+    second: troll_powerups_19
+  - first:
+      213: -5016662671798572760
+    second: troll_powerups_20
+  - first:
+      213: -5241914914705573768
+    second: troll_powerups_21
+  - first:
+      213: -4801576184953748151
+    second: troll_powerups_22
+  - first:
+      213: 1996826421658364355
+    second: troll_powerups_23
+  - first:
+      213: 842511841929332268
+    second: troll_powerups_24
+  - first:
+      213: -8798504046840673177
+    second: troll_powerups_25
+  - first:
+      213: 7515299886840838994
+    second: troll_powerups_26
+  - first:
+      213: 2952588957918170608
+    second: troll_powerups_27
+  - first:
+      213: -8784041274270234733
+    second: troll_powerups_28
+  - first:
+      213: 6411398795030645762
+    second: troll_powerups_29
+  - first:
+      213: -4866156748885260966
+    second: troll_powerups_30
+  - first:
+      213: 2720251483141232348
+    second: troll_powerups_31
+  - first:
+      213: -8058237827191440184
+    second: troll_powerups_32
+  - first:
+      213: 6305637378605377000
+    second: troll_powerups_33
+  - first:
+      213: 60966227047417521
+    second: troll_powerups_34
+  - first:
+      213: -3517441503957236765
+    second: troll_powerups_35
+  - first:
+      213: -1586028209601279893
+    second: troll_powerups_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: troll_powerups_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d8553a4e218adf80800000000000000
+      internalID: -8081004545549444908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll_powerups_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 688ebe55d3046cba0800000000000000
+      internalID: -6069092815656458106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll_powerups_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8163e01ca5f44f60800000000000000
+      internalID: 8017803355992842639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: troll_powerups_3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50853cecc95f26580800000000000000
+      internalID: -8835229465114879995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 37f6a3b0ce7d1ff4f87efb835f35b78c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":2.0},"gridSpriteSize":{"x":512.0,"y":512.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      troll_powerups_0: -8081004545549444908
+      troll_powerups_1: -6069092815656458106
+      troll_powerups_2: 8017803355992842639
+      troll_powerups_3: -8835229465114879995
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

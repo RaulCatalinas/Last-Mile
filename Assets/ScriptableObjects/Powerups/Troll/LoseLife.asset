@@ -16,9 +16,11 @@ MonoBehaviour:
   esPowerUpName: "Latido Fr\xE1gil"
   description: Feel the risk.
   esDescription: Siente el riesgo.
-  icon: {fileID: 0}
-  isTroll: 1
+  icon: {fileID: 8017803355992842639, guid: 5d4334fe4623b1841b9fb1baf8e24e18, type: 3}
   type: 6
   duration: 0
   value: 1
   spawnChance: 0.05
+  lifetime: 10
+  warningTime: 3
+  trollReward: {fileID: 11400000, guid: bca4a8ce822bf43c8998508759d474cd, type: 2}

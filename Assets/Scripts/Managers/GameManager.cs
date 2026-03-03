@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static bool isGameOver { get; private set; }
     public static PlayerStats selectedPlayer { get; private set; }
     public static int playerLives { get; private set; }
+    public static PowerUpData activePowerUp { get; private set; }
 
     void Awake()
     {
@@ -64,5 +65,10 @@ public class GameManager : MonoBehaviour
         playerLives--;
 
         if (playerLives <= 0) isGameOver = true;
+    }
+
+    public void ActivatePowerUp(PowerUpData powerUp)
+    {
+        activePowerUp = powerUp;
     }
 }

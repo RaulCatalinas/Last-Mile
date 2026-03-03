@@ -5,8 +5,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
-    [Header("Crash Clip")]
+    [Header("Clips")]
     [SerializeField] private AudioClip crashClip;
+    [SerializeField] private AudioClip powerUpClip;
 
     [Header("Impact Settings")]
     [SerializeField] private float damagePitch = 1.3f;
@@ -47,5 +48,10 @@ public class AudioManager : MonoBehaviour
 
         audioSource.pitch = 1f;
         audioSource.volume = 1f;
+    }
+
+    public void PlayPowerUp()
+    {
+        audioSource.PlayOneShot(powerUpClip);
     }
 }

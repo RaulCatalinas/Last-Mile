@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - RoadEnd
+  - PowerUp
   layers:
   - Default
   - TransparentFX
