@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1564460833415492499}
   - component: {fileID: 1160743476702209352}
   - component: {fileID: -8601031568069413673}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Motorcycle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleController
   smokeStartPoint: {fileID: 3403391609491241951}
   smokePrefab: {fileID: 1624318782568494453, guid: d6dab8e96a7544a03812c47750edfe52, type: 3}
+  useDoubleSpeed: 0
 --- !u!212 &332155243328690542
 SpriteRenderer:
   serializedVersion: 2
@@ -282,6 +283,10 @@ PrefabInstance:
     - target: {fileID: 3099426470385353832, guid: 8e5e8943d3fab4649acf152bf86551c1, type: 3}
       propertyPath: m_Name
       value: SmokeStartPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3099426470385353832, guid: 8e5e8943d3fab4649acf152bf86551c1, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5875876445365334832, guid: 8e5e8943d3fab4649acf152bf86551c1, type: 3}
       propertyPath: m_LocalPosition.x

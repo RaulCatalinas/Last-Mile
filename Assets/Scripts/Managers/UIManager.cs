@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     private List<HeartController> hearts = new List<HeartController>();
+    private int previousLives;
 
     void Awake()
     {
@@ -54,10 +55,24 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLives(int currentLives)
     {
-        for (int i = hearts.Count - 1; i >= currentLives; i--)
+        Debug.Log($"Updating lives: {currentLives}, Previous: {previousLives}");
+
+        if (currentLives < previousLives)
         {
-            hearts[i].PlayLoseHeartAnimation();
+            for (int i = previousLives - 1; i >= currentLives; i--)
+            {
+                hearts[i].PlayLoseHeartAnimation();
+            }
         }
+        else
+        {
+            for (int i = previousLives; i < currentLives; i++)
+            {
+                hearts[i].PlayGainHealthAnimation();
+            }
+        }
+
+        previousLives = currentLives;
     }
 
     public void InitializeLives(int totalLives)
@@ -69,5 +84,7 @@ public class UIManager : MonoBehaviour
 
             hearts.Add(heart);
         }
+
+        previousLives = totalLives;
     }
 }

@@ -7,6 +7,8 @@ public class PowerUpController : MonoBehaviour
     private PowerUpData powerUpData;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+    private Transform spawnPoint;
+    private PowerUpSpawner spawner;
 
     void Awake()
     {
@@ -38,10 +40,13 @@ public class PowerUpController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Initialize(PowerUpData data)
+    public void Initialize(PowerUpData data, Transform point, PowerUpSpawner owner)
     {
+        spawnPoint = point;
+        spawner = owner;
         powerUpData = data;
         spriteRenderer.sprite = powerUpData.icon;
+
         StartCoroutine(LifetimeRoutine());
     }
 
@@ -52,5 +57,10 @@ public class PowerUpController : MonoBehaviour
         PowerUpsManager.Instance.ActivatePowerUp(powerUpData);
         AudioManager.Instance.PlayPowerUp(powerUpData.isTroll);
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (spawner != null && spawnPoint != null) spawner.FreeSpawnPoint(spawnPoint);
     }
 }

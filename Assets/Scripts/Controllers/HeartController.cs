@@ -11,11 +11,13 @@ public class HeartController : MonoBehaviour
 
     public void PlayLoseHeartAnimation()
     {
-        animator.SetBool("LoseHeart", true);
+        animator.SetBool("GainHealth", false);
+        animator.SetBool("LoseHealth", true);
     }
 
-    public void EnableHeart()
+    public void PlayGainHealthAnimation()
     {
-        gameObject.SetActive(true);
+        animator.SetBool("LoseHealth", false);
+        animator.SetBool("GainHealth", true);
     }
 }

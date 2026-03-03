@@ -23,7 +23,7 @@ public class PowerUpsManager : MonoBehaviour
             { PowerUpType.ScoreMultiplier, p => StartCoroutine(ScoreMultiplierEffect(p)) },
             { PowerUpType.ScoreReduction, p => StartCoroutine(ScoreReductionEffect(p)) },
             { PowerUpType.Invincibility, p => StartCoroutine(InvincibilityEffect(p)) },
-            { PowerUpType.LoseLife, p => StartCoroutine(LoseLifeEffect(p)) },
+            { PowerUpType.LoseLife, _ => LoseLifeEffect() },
             { PowerUpType.InvertedControls, p => StartCoroutine(InvertedControlsEffect(p)) }
         };
     }
@@ -36,7 +36,7 @@ public class PowerUpsManager : MonoBehaviour
 
     void ApplyExtraLife(PowerUpData powerUp)
     {
-        if (GameManager.playerLives >= GameManager.selectedPlayer.lives)
+        if (GameManager.playerLives == GameManager.selectedPlayer.lives)
         {
             ActivatePowerUp(scoreMultiplierPowerUp);
 
@@ -44,6 +44,19 @@ public class PowerUpsManager : MonoBehaviour
         }
 
         GameManager.Instance.GainLife();
+        UIManager.Instance.UpdateLives(GameManager.playerLives);
+    }
+
+    void LoseLifeEffect()
+    {
+        if (GameManager.playerLives == 0)
+        {
+            GameManager.Instance.GameOver();
+
+            return;
+        }
+
+        GameManager.Instance.LoseLife();
         UIManager.Instance.UpdateLives(GameManager.playerLives);
     }
 
@@ -95,15 +108,6 @@ public class PowerUpsManager : MonoBehaviour
 
         PlayerController.Instance.GetSpriteRenderer().color = Color.white;
         PlayerController.Instance.SetInvincible(false);
-
-        if (powerUp.trollReward != null) ActivatePowerUp(powerUp.trollReward);
-    }
-
-    IEnumerator LoseLifeEffect(PowerUpData powerUp)
-    {
-        GameManager.Instance.LoseLife();
-        UIManager.Instance.UpdateLives(GameManager.playerLives);
-        yield return new WaitForSeconds(powerUp.duration);
 
         if (powerUp.trollReward != null) ActivatePowerUp(powerUp.trollReward);
     }

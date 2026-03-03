@@ -18,6 +18,9 @@ public class PowerUpSpawner : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float trollProbability = 0.3f;
     [SerializeField] private float minDistanceFromPlayer = 1f;
 
+    [SerializeField] private HashSet<Transform> occupiedSpawnPoints = new HashSet<Transform>();
+    [SerializeField] private List<Transform> availableSpawnPoints = new List<Transform>();
+
     void Start()
     {
         StartCoroutine(SpawnPowerUps());
@@ -35,24 +38,41 @@ public class PowerUpSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnInterval);
 
-            Transform spawnPoint;
+            availableSpawnPoints.Clear();
 
-            do
+            foreach (var point in spawnPoints)
             {
-                var randomIndex = Random.Range(0, spawnPoints.Count);
-                spawnPoint = spawnPoints[randomIndex];
-            } while (
-                Vector2.Distance(spawnPoint.position, player.position) < minDistanceFromPlayer
-            );
+                bool isOccupied = occupiedSpawnPoints.Contains(point);
+                bool tooCloseToPlayer = Vector2.Distance(point.position, player.position) < minDistanceFromPlayer;
 
-            var powerUpData = GetRandomPowerUpData();
+                if (!isOccupied && !tooCloseToPlayer) availableSpawnPoints.Add(point);
+            }
+
+            if (availableSpawnPoints.Count == 0)
+            {
+                Debug.LogWarning("No spawn points available.");
+                continue;
+            }
+
+            var spawnPoint = availableSpawnPoints[Random.Range(0, availableSpawnPoints.Count)];
+
             var powerUpInstance = Instantiate(
                 powerUpPrefab,
                 spawnPoint.position,
                 Quaternion.identity
             );
+
+            occupiedSpawnPoints.Add(spawnPoint);
+
+            var powerUpData = GetRandomPowerUpData();
             var powerUpController = powerUpInstance.GetComponent<PowerUpController>();
-            powerUpController.Initialize(powerUpData);
+
+            powerUpController.Initialize(powerUpData, spawnPoint, this);
         }
+    }
+
+    public void FreeSpawnPoint(Transform point)
+    {
+        occupiedSpawnPoints.Remove(point);
     }
 }
