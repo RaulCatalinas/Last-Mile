@@ -59,8 +59,8 @@ public class PowerUpController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
-        if (spawner != null && spawnPoint != null) spawner.FreeSpawnPoint(spawnPoint);
+        spawner.FreeSpawnPoint(spawnPoint);
     }
 }
