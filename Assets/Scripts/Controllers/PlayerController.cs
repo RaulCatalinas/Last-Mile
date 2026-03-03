@@ -6,18 +6,21 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private FloatingJoystick joystick;
 
+    public static PlayerController Instance { get; private set; }
+    public static bool isInvincible { get; private set; }
+
     private Rigidbody2D rb;
     private PlayerStats stats;
     private SpriteRenderer spriteRenderer;
-    private bool isInvincible = false;
     private float speedMultiplier = 1f;
     private bool invertedControls = false;
 
-    public static PlayerController Instance { get; private set; }
 
     void Awake()
     {
-        Instance = this;
+        if (Instance == null) Instance = this;
+
+        isInvincible = false;
         rb = GetComponent<Rigidbody2D>();
         stats = GameManager.selectedPlayer;
         spriteRenderer = GetComponent<SpriteRenderer>();

@@ -35,7 +35,7 @@ public class ObstacleController : MonoBehaviour
 
         AudioManager.Instance.PlayCrash(GameManager.isGameOver, speed);
 
-        if (GameManager.isGameOver)
+        if (GameManager.isGameOver && !PlayerController.isInvincible)
         {
             Instantiate(smokePrefab, smokeStartPoint.position, Quaternion.identity);
 
